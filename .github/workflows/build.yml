@@ -149,9 +149,7 @@ jobs:
           profile: Nexus 6
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-          script: |
-            set -euo pipefail
-            gradle connectedDebugAndroidTest -PallowFallback=false --stacktrace 2>&1 | tee instrumented-test.log
+          script: bash -c "set -euo pipefail; gradle connectedDebugAndroidTest -PallowFallback=false --stacktrace 2>&1 | tee instrumented-test.log"
 
       - name: Upload Native Libraries (.so), Regenerated Patches, APKs, and Build Logs
         if: always()

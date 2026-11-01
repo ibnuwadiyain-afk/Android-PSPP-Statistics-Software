@@ -57,7 +57,11 @@ class ExampleInstrumentedTest {
             format = "html",
             language = AppLanguage.EN
         )
-        assertEquals("descriptives.sps exit code must be 0", 0, descResult.exitCode)
+        assertEquals(
+            "descriptives.sps exit code must be 0 (diagnostics=${descResult.diagnostics}, txt=${descResult.plainTextContent})",
+            0,
+            descResult.exitCode
+        )
         assertTrue("descriptives.sps must execute on real native JNI engine", descResult.usedNativeJni)
         assertFalse(
             "Native engine output must NOT contain approximation banner",
@@ -65,7 +69,7 @@ class ExampleInstrumentedTest {
         )
         for (token in descExpected) {
             assertTrue(
-                "Native descriptives.sps output missing expected token '$token'",
+                "Native descriptives.sps output missing expected token '$token' in:\n${descResult.plainTextContent}",
                 descResult.plainTextContent.contains(token) || descResult.htmlContent.contains(token)
             )
         }
@@ -84,11 +88,15 @@ class ExampleInstrumentedTest {
             format = "html",
             language = AppLanguage.EN
         )
-        assertEquals("regression.sps exit code must be 0", 0, regResult.exitCode)
+        assertEquals(
+            "regression.sps exit code must be 0 (diagnostics=${regResult.diagnostics}, txt=${regResult.plainTextContent})",
+            0,
+            regResult.exitCode
+        )
         assertTrue("regression.sps must execute on real native JNI engine", regResult.usedNativeJni)
         for (token in regExpected) {
             assertTrue(
-                "Native regression.sps output missing expected token '$token'",
+                "Native regression.sps output missing expected token '$token' in:\n${regResult.plainTextContent}",
                 regResult.plainTextContent.contains(token) || regResult.htmlContent.contains(token)
             )
         }
