@@ -112,8 +112,8 @@ GPG_STATUS="$(gpg --homedir "${GNUPGHOME_TMP}" \
   --verify "${DOWNLOAD_DIR}/${PSPP_TARBALL}.sig" "${DOWNLOAD_DIR}/${PSPP_TARBALL}" 2>&1 || true)"
 
 echo "${GPG_STATUS}"
-if ! echo "${GPG_STATUS}" | grep -q "\[GNUPG:\] VALIDSIG ${PINNED_FPR}"; then
-  if ! echo "${GPG_STATUS}" | grep -E "\[GNUPG:\] VALIDSIG [0-9A-F]+ .* ${PINNED_FPR}" >/dev/null; then
+if ! grep -F "[GNUPG:] VALIDSIG ${PINNED_FPR}" >/dev/null <<< "${GPG_STATUS}"; then
+  if ! grep -E "\[GNUPG:\] VALIDSIG [0-9A-F]+ .* ${PINNED_FPR}" >/dev/null <<< "${GPG_STATUS}"; then
     echo "FATAL: GPG signature verification failed or signing key fingerprint did not match pinned key ${PINNED_FPR}" >&2
     exit 1
   fi
@@ -723,6 +723,9 @@ EOF
   popd >/dev/null
   echo "==> [${ABI}] Produced ${JNILIBS_DIR}/${ABI}/libpspp_jni.so ($(du -h "${JNILIBS_DIR}/${ABI}/libpspp_jni.so" | cut -f1))"
 done
+
+# Remove intermediate extracted source and object directories (keep sysroot and downloads for CI cache)
+rm -rf "${BUILD_ROOT}/src" "${BUILD_ROOT}/build"
 
 echo "======================================================================"
 echo "All native libraries built successfully:"

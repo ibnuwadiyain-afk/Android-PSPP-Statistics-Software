@@ -61,12 +61,16 @@ jobs:
       - name: Verify compiled libpspp_jni.so for all ABIs (arm64-v8a, armeabi-v7a, x86_64)
         run: |
           set -euo pipefail
+          LLVM_NM="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-nm"
           for abi in arm64-v8a armeabi-v7a x86_64; do
             so_file="app/src/main/jniLibs/${abi}/libpspp_jni.so"
             test -s "${so_file}"
-            file "${so_file}" | grep -i "ELF"
-            "${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-nm" -D "${so_file}" | grep -q "Java_org_pspp_mobile_engine_PsppBridge_nativeRunSyntax"
-            "${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-nm" -D "${so_file}" | grep -q "pspp_cli_entry_main"
+            file_info="$(file "${so_file}")"
+            echo "${file_info}"
+            grep -i "ELF" <<< "${file_info}" >/dev/null
+            "${LLVM_NM}" -D "${so_file}" > "/tmp/nm-${abi}.txt"
+            grep "Java_org_pspp_mobile_engine_PsppBridge_nativeRunSyntax" "/tmp/nm-${abi}.txt"
+            grep "pspp_cli_entry_main" "/tmp/nm-${abi}.txt"
           done
           ls -lh app/src/main/jniLibs/*/libpspp_jni.so
 
@@ -74,11 +78,15 @@ jobs:
         run: |
           set -euo pipefail
           for lang in en ar fr; do
-            test -f "app/src/main/assets/pspp/locale/${lang}/LC_MESSAGES/pspp.mo"
-            file "app/src/main/assets/pspp/locale/${lang}/LC_MESSAGES/pspp.mo" | grep -i "GNU message catalog"
+            mo_file="app/src/main/assets/pspp/locale/${lang}/LC_MESSAGES/pspp.mo"
+            test -f "${mo_file}"
+            mo_info="$(file "${mo_file}")"
+            echo "${mo_info}"
+            grep -i "GNU message catalog" <<< "${mo_info}" >/dev/null
           done
-          if find app/src/main/assets/pspp/locale -name "*.po" | grep -q .; then
-            echo "ERROR: Uncompiled .po files found in assets!" >&2
+          po_files="$(find app/src/main/assets/pspp/locale -name "*.po")"
+          if [ -n "${po_files}" ]; then
+            echo "ERROR: Uncompiled .po files found in assets: ${po_files}" >&2
             exit 1
           fi
 
@@ -117,7 +125,8 @@ jobs:
           gradle assembleDebug assembleRelease -PallowFallback=false -PenableAbiSplits=true --stacktrace 2>&1 | tee gradle-build.log
           for apk in app/build/outputs/apk/debug/*.apk app/build/outputs/apk/release/*.apk; do
             echo "Verifying native library inside ${apk}..."
-            unzip -l "${apk}" | grep "libpspp_jni.so"
+            unzip -l "${apk}" > /tmp/apk-list.txt
+            grep "libpspp_jni.so" /tmp/apk-list.txt
           done
 
       - name: Run JVM Unit & Robolectric Tests

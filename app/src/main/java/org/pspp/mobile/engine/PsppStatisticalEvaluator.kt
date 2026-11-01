@@ -250,10 +250,14 @@ object PsppStatisticalEvaluator {
                 upper.startsWith("REGRESSION") -> {
                     val depMatch = Regex("DEPENDENT\\s*=\\s*([a-zA-Z0-9_]+)", RegexOption.IGNORE_CASE).find(stmt)
                     val depVar = depMatch?.groupValues?.get(1) ?: "outcome_score"
-                    val enterMatch = Regex("METHOD\\s*=\\s*ENTER\\s+([^/]+)", RegexOption.IGNORE_CASE).find(stmt)
-                    val indepVars = enterMatch?.groupValues?.get(1)?.trim()?.split(Regex("\\s+"))
+                    val enterMatch = Regex("METHOD\\s*=\\s*ENTER(?:\\s+([^/.]+))?", RegexOption.IGNORE_CASE).find(stmt)
+                    val enterVars = enterMatch?.groupValues?.getOrNull(1)?.trim()
+                        ?.split(Regex("\\s+"))
                         ?.filter { it.isNotBlank() && !it.equals(depVar, true) }
-                        ?: extractVariablesList(stmt, "VARIABLES", activeDataset).filter { !it.equals(depVar, true) }
+                        .orEmpty()
+                    val indepVars = enterVars.ifEmpty {
+                        extractVariablesList(stmt, "VARIABLES", activeDataset).filter { !it.equals(depVar, true) }
+                    }
                     renderLinearRegression(activeDataset, depVar, indepVars, language, htmlSections, txtSections, csvRows)
                 }
 

@@ -21,7 +21,7 @@ CORRELATIONS
 REGRESSION
   /VARIABLES=adherence_score baseline_bp age outcome_score
   /DEPENDENT=outcome_score
-  /METHOD=ENTER adherence_score baseline_bp age
+  /METHOD=ENTER
   /STATISTICS=COEFF R ANOVA CI.
 
 RELIABILITY

@@ -303,13 +303,42 @@ Java_org_pspp_mobile_engine_PsppBridge_nativeReadDataset(
     int rc = -2;
 #ifdef HAVE_PSPP_CORE
     pthread_mutex_lock(&g_engine_mutex);
-    char *argv_pspp[] = {
-        (char *)"pspp",
-        (char *)"-o", meta_html,
-        sps_path,
-        NULL
-    };
-    rc = pspp_cli_entry_main(4, argv_pspp);
+    pid_t pid = fork();
+    if (pid == 0) {
+        if (chdir(work_dir) != 0) {
+            _exit(126);
+        }
+        char *argv_pspp[] = {
+            (char *)"pspp",
+            (char *)"-o", meta_html,
+            sps_path,
+            NULL
+        };
+        int child_rc = pspp_cli_entry_main(4, argv_pspp);
+        fflush(stdout);
+        fflush(stderr);
+        _exit(child_rc);
+    } else if (pid > 0) {
+        int status = 0;
+        while (waitpid(pid, &status, 0) < 0) {
+            if (errno != EINTR) break;
+        }
+        if (WIFEXITED(status)) {
+            rc = WEXITSTATUS(status);
+        } else if (WIFSIGNALED(status)) {
+            rc = 128 + WTERMSIG(status);
+        } else {
+            rc = -1;
+        }
+    } else {
+        char *argv_pspp[] = {
+            (char *)"pspp",
+            (char *)"-o", meta_html,
+            sps_path,
+            NULL
+        };
+        rc = pspp_cli_entry_main(4, argv_pspp);
+    }
     pthread_mutex_unlock(&g_engine_mutex);
 #endif
 

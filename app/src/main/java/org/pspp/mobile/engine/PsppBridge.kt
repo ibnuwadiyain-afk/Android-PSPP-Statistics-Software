@@ -134,7 +134,16 @@ object PsppBridge {
             }
 
             val scriptFile = File(runDir, "syntax.sps")
-            scriptFile.writeText(scriptContent)
+            val hasDataSourceCmd = Regex(
+                "^\\s*(GET\\s+FILE|GET\\s+DATA|DATA\\s+LIST|IMPORT)\\b",
+                setOf(RegexOption.IGNORE_CASE, RegexOption.MULTILINE)
+            ).containsMatchIn(scriptContent)
+            val effectiveNativeScript = if (hasDataSourceCmd) {
+                scriptContent
+            } else {
+                "GET FILE='${activeSavFile.name}'.\n$scriptContent"
+            }
+            scriptFile.writeText(if (isNativeLoaded) effectiveNativeScript else scriptContent)
 
             val startMs = System.currentTimeMillis()
             if (isNativeLoaded) {

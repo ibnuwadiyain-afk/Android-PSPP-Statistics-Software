@@ -8,6 +8,7 @@ plugins {
 }
 
 val enableCmake = project.findProperty("useCmake")?.toString()?.toBoolean() == true
+val enableAbiSplits = project.findProperty("enableAbiSplits")?.toString()?.toBoolean() == true
 // Gradle property -PallowFallback=false (default false for release builds, true for debug builds unless overridden)
 val allowFallbackProperty = project.findProperty("allowFallback")?.toString()?.toBoolean()
 
@@ -24,8 +25,10 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-    ndk {
-      abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
+    if (!enableAbiSplits) {
+      ndk {
+        abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
+      }
     }
 
     if (enableCmake) {
@@ -40,7 +43,7 @@ android {
   }
 
   // ABI splits + universal APK as requested for multi-ABI native delivery.
-  if (project.findProperty("enableAbiSplits")?.toString()?.toBoolean() == true) {
+  if (enableAbiSplits) {
     splits {
       abi {
         isEnable = true

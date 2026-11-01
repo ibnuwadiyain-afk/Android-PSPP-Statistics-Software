@@ -201,7 +201,7 @@ object PsppSyntaxGenerator {
                     appendLine("REGRESSION")
                     appendLine("  /VARIABLES=$allRegVars")
                     appendLine("  /DEPENDENT=$depVar")
-                    appendLine("  /METHOD=ENTER ${indepVars.joinToString(" ")}")
+                    appendLine("  /METHOD=ENTER")
                     appendLine("  /STATISTICS=COEFF R ANOVA CI.")
                     appendLine("EXECUTE.")
                 }
