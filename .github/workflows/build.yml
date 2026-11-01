@@ -3,9 +3,13 @@ name: Build Native PSPP 2.1.2 & Android APKs
 on:
   push:
     branches: [ "main", "master" ]
+    tags: [ "v*" ]
   pull_request:
     branches: [ "main", "master" ]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build-native-and-apk:
@@ -128,6 +132,39 @@ jobs:
             unzip -l "${apk}" > /tmp/apk-list.txt
             grep "libpspp_jni.so" /tmp/apk-list.txt
           done
+
+      - name: Publish APKs directly to GitHub Release
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG_NAME="v2.1.2-android"
+          if [[ "${GITHUB_REF:-}" == refs/tags/* ]]; then
+            TAG_NAME="${GITHUB_REF_NAME}"
+          fi
+          echo "Publishing APKs to GitHub Release ${TAG_NAME}..."
+          if gh release view "${TAG_NAME}" >/dev/null 2>&1; then
+            gh release upload "${TAG_NAME}" \
+              app/build/outputs/apk/release/*.apk \
+              app/build/outputs/apk/debug/*.apk \
+              --clobber
+          else
+            gh release create "${TAG_NAME}" \
+              app/build/outputs/apk/release/*.apk \
+              app/build/outputs/apk/debug/*.apk \
+              --target "${GITHUB_SHA}" \
+              --title "PSPP Studio v2.1.2 (GNU PSPP 2.1.2 Native Android)" \
+              --notes "Native Android build of **GNU PSPP 2.1.2** (\`org.pspp.mobile\`) with real cross-compiled \`libpspp_jni.so\` (\`arm64-v8a\`, \`armeabi-v7a\`, \`x86_64\`) and compiled \`.mo\` gettext catalogs.
+
+          ### Included APKs
+          - \`app-arm64-v8a-release.apk\` — 64-bit ARM devices (recommended for modern Android phones/tablets)
+          - \`app-armeabi-v7a-release.apk\` — 32-bit ARM devices
+          - \`app-x86_64-release.apk\` — x86_64 emulators / Chromebooks
+          - \`app-universal-release.apk\` — Universal APK containing all ABIs
+          - Corresponding \`*-debug.apk\` builds" \
+              --latest
+          fi
 
       - name: Run JVM Unit & Robolectric Tests
         run: |
