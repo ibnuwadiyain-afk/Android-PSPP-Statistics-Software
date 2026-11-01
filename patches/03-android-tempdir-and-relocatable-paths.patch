@@ -1,0 +1,49 @@
+# Reason: Honour TMPDIR and runtime PSPP_DATADIR/PSPP_LOCALEDIR so init() points gettext at extracted .mo files on Android.
+--- a/gl/tmpdir.c
++++ b/gl/tmpdir.c
+@@ -133,6 +133,10 @@
+         dir = P_tmpdir;
+       else if (strcmp (P_tmpdir, "/tmp") != 0 && direxists ("/tmp"))
+         dir = "/tmp";
++#if defined __ANDROID__
++      else if (direxists ("/data/local/tmp"))
++        dir = "/data/local/tmp";
++#endif
+       else
+         {
+           __set_errno (ENOENT);
+--- a/gl/relocatable.c
++++ b/gl/relocatable.c
+@@ -489,6 +489,17 @@
+ const char *
+ relocate (const char *pathname)
+ {
++#if defined __ANDROID__
++  if (pathname != NULL)
++    {
++      const char *env_data = getenv ("PSPP_DATADIR");
++      if (env_data != NULL && strstr (pathname, "/share/pspp") != NULL)
++        return env_data;
++      const char *env_locale = getenv ("PSPP_LOCALEDIR");
++      if (env_locale != NULL && strstr (pathname, "/share/locale") != NULL)
++        return env_locale;
++    }
++#endif
+ #if defined PIC && defined INSTALLDIR && ENABLE_COSTLY_RELOCATABLE
+   static int initialized;
+ 
+--- a/src/libpspp/i18n.c
++++ b/src/libpspp/i18n.c
+@@ -694,8 +694,10 @@
+ i18n_init (void)
+ {
+   setlocale (LC_ALL, "");
+-  char *allocated;
+-  bindtextdomain (PACKAGE, relocate2 (locale_dir, &allocated));
++  char *allocated = NULL;
++  const char *env_locale = getenv ("PSPP_LOCALEDIR");
++  bindtextdomain (PACKAGE, env_locale ? env_locale : relocate2 (locale_dir, &allocated));
++  bind_textdomain_codeset (PACKAGE, "UTF-8");
+   free (allocated);
+   textdomain (PACKAGE);
+ 

@@ -1,0 +1,83 @@
+# Reason: Expose library entry point pspp_cli_entry_main with atomic cancel check and siglongjmp exit() guard.
+--- a/src/ui/terminal/main.c
++++ b/src/ui/terminal/main.c
+@@ -59,6 +59,38 @@
+ #include "gettext.h"
+ #define _(msgid) gettext (msgid)
+ 
++#include <setjmp.h>
++#include <stdatomic.h>
++
++static sigjmp_buf pspp_jni_exit_jmp;
++static int pspp_jni_jmp_armed = 0;
++static atomic_int pspp_jni_cancel_requested = 0;
++
++void
++pspp_request_cancel (void)
++{
++  atomic_store (&pspp_jni_cancel_requested, 1);
++}
++
++int
++pspp_is_cancel_requested (void)
++{
++  return atomic_load (&pspp_jni_cancel_requested);
++}
++
++void
++pspp_safe_exit (int status)
++{
++  if (pspp_jni_jmp_armed)
++    siglongjmp (pspp_jni_exit_jmp, status == 0 ? 1000 : status);
++  exit (status);
++}
++
++#ifdef PSPP_ANDROID_LIBRARY
++#define main pspp_cli_entry_main
++#define exit(code) pspp_safe_exit(code)
++#endif
++
+ static struct session *the_session;
+ 
+ static void add_syntax_reader (struct lexer *, const char *file_name,
+@@ -132,10 +164,30 @@
+   else
+     add_syntax_reader (lexer, "-", syntax_encoding, syntax_mode);
+ 
++#ifdef PSPP_ANDROID_LIBRARY
++  atomic_store (&pspp_jni_cancel_requested, 0);
++  pspp_jni_jmp_armed = 1;
++  int jmp_rc = sigsetjmp (pspp_jni_exit_jmp, 1);
++  if (jmp_rc != 0)
++    {
++      pspp_jni_jmp_armed = 0;
++      output_engine_pop ();
++      session_destroy (the_session);
++      random_done ();
++      settings_done ();
++      fh_done ();
++      lex_destroy (lexer);
++      i18n_done ();
++      return (jmp_rc == 1000) ? EXIT_SUCCESS : jmp_rc;
++    }
++#endif
++
+   /* Parse and execute syntax. */
+   lex_get (lexer);
+   for (;;)
+     {
++      if (pspp_is_cancel_requested ())
++        break;
+       int result = cmd_parse (lexer, session_active_dataset (the_session));
+ 
+       if (result == CMD_EOF || result == CMD_FINISH)
+@@ -169,6 +221,9 @@
+     }
+ 
+ 
++#ifdef PSPP_ANDROID_LIBRARY
++  pspp_jni_jmp_armed = 0;
++#endif
+   output_engine_pop ();
+   session_destroy (the_session);
+ 

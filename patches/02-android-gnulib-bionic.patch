@@ -1,0 +1,23 @@
+# Reason: Fix gnulib cross-compile assumptions and Android Bionic UTF-8 codeset and NULL argv0 handling.
+--- a/gl/nl_langinfo.c
++++ b/gl/nl_langinfo.c
+@@ -134,6 +134,8 @@
+       strcpy (result, buf);
+       return result;
+     }
++# elif defined __ANDROID__
++  return (char *) "UTF-8";
+ # else
+   strcpy (result, codeset);
+   return result;
+--- a/gl/progname.c
++++ b/gl/progname.c
+@@ -41,6 +41,8 @@
+      But the name of the temporary executable is a detail that should not be
+      visible to the end user and to the test suite.
+      Remove this "<dirname>/.libs/" or "<dirname>/.libs/lt-" prefix here.  */
++  if (argv0 == NULL)
++    argv0 = "pspp";
+   char const *slash = strrchr (argv0, '/');
+   char const *base = slash ? slash + 1 : argv0;
+   if (7 <= base - argv0 && memeq (base - 7, "/.libs/", 7))
