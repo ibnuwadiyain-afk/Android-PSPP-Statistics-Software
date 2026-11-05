@@ -1,9 +1,12 @@
 package org.pspp.mobile
 
+import android.content.ContextWrapper
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.LocalActivityResultRegistryOwner
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -98,14 +101,18 @@ fun PsppWorkbenchRoot(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val baseContext = LocalContext.current
+    val activityResultOwner = LocalActivityResultRegistryOwner.current
 
-    // Apply selected language (English, Arabic RTL, French) dynamically to Context & LayoutDirection
+    // Apply selected language (English, Arabic RTL, French) dynamically while preserving Activity ContextWrapper chain
     val localizedContext = remember(baseContext, uiState.language) {
         val config = Configuration(baseContext.resources.configuration)
         Locale.setDefault(uiState.language.locale)
         config.setLocale(uiState.language.locale)
         config.setLayoutDirection(uiState.language.locale)
-        baseContext.createConfigurationContext(config)
+        val configCtx = baseContext.createConfigurationContext(config)
+        object : ContextWrapper(baseContext) {
+            override fun getResources(): Resources = configCtx.resources
+        }
     }
 
     var pendingSaveFormat by remember { mutableStateOf("sav") }
@@ -146,10 +153,15 @@ fun PsppWorkbenchRoot(
         )
     }
 
-    CompositionLocalProvider(
-        LocalContext provides localizedContext,
-        LocalLayoutDirection provides uiState.language.layoutDirection
-    ) {
+    val providers = buildList {
+        add(LocalContext provides localizedContext)
+        add(LocalLayoutDirection provides uiState.language.layoutDirection)
+        if (activityResultOwner != null) {
+            add(LocalActivityResultRegistryOwner provides activityResultOwner)
+        }
+    }.toTypedArray()
+
+    CompositionLocalProvider(*providers) {
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val isExpandedScreen = maxWidth >= 700.dp
 
@@ -370,7 +382,15 @@ fun PsppWorkbenchRoot(
                                     currentLanguage = uiState.language,
                                     patchesMap = uiState.patchesMap,
                                     gplLicenseText = uiState.gplLicenseText,
-                                    onSelectLanguage = viewModel::setLanguage
+                                    onSelectLanguage = viewModel::setLanguage,
+                                    onSaveArabicGuidePdf = {
+                                        pendingSaveFormat = "pdf_ar"
+                                        createDocumentLauncher.launch("PSPP_Studio_User_Guide_AR.pdf")
+                                    },
+                                    onSaveEnglishGuidePdf = {
+                                        pendingSaveFormat = "pdf_en"
+                                        createDocumentLauncher.launch("PSPP_Studio_User_Guide.pdf")
+                                    }
                                 )
                             }
                         }

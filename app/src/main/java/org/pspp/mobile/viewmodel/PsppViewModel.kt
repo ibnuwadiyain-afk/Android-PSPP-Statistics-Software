@@ -524,6 +524,12 @@ class PsppViewModel(application: Application) : AndroidViewModel(application) {
                         val stamped = if (isFallback && !rawCsv.contains(stamp)) "# $stamp\n$rawCsv" else rawCsv
                         stamped.toByteArray(Charsets.UTF_8)
                     }
+                    "pdf_ar" -> {
+                        context.assets.open("pspp/PSPP_Studio_User_Guide_AR.pdf").use { it.readBytes() }
+                    }
+                    "pdf_en" -> {
+                        context.assets.open("pspp/PSPP_Studio_User_Guide.pdf").use { it.readBytes() }
+                    }
                     else -> {
                         val rawCsv = SavBinaryCodec.exportDatasetToCsv(state.dataset)
                         val stamped = if (isFallback && !rawCsv.contains(stamp)) "# $stamp\n$rawCsv" else rawCsv
