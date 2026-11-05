@@ -139,18 +139,22 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          TAG_NAME="v2.1.2-android"
+          TAG_NAME="v1.0.0"
           if [[ "${GITHUB_REF:-}" == refs/tags/* ]]; then
             TAG_NAME="${GITHUB_REF_NAME}"
           fi
           echo "Publishing APKs to GitHub Release ${TAG_NAME}..."
           if gh release view "${TAG_NAME}" >/dev/null 2>&1; then
             gh release upload "${TAG_NAME}" \
+              PSPP_Studio_User_Guide_AR.pdf \
+              PSPP_Studio_User_Guide.pdf \
               app/build/outputs/apk/release/*.apk \
               app/build/outputs/apk/debug/*.apk \
               --clobber
           else
             gh release create "${TAG_NAME}" \
+              PSPP_Studio_User_Guide_AR.pdf \
+              PSPP_Studio_User_Guide.pdf \
               app/build/outputs/apk/release/*.apk \
               app/build/outputs/apk/debug/*.apk \
               --target "${GITHUB_SHA}" \

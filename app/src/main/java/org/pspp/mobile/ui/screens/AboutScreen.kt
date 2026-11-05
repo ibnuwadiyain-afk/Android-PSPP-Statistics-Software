@@ -2,6 +2,8 @@ package org.pspp.mobile.ui.screens
 
 import android.content.Intent
 import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +19,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Memory
@@ -66,6 +69,34 @@ fun AboutScreen(
     val scrollState = rememberScrollState()
     var selectedPatchName by remember(patchesMap) {
         mutableStateOf(patchesMap.keys.firstOrNull().orEmpty())
+    }
+    val savePdfGuideLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("application/pdf")
+    ) { destUri ->
+        if (destUri != null) {
+            try {
+                context.assets.open("pspp/PSPP_Studio_User_Guide.pdf").use { input ->
+                    context.contentResolver.openOutputStream(destUri)?.use { output ->
+                        input.copyTo(output)
+                    }
+                }
+            } catch (_: Exception) {
+            }
+        }
+    }
+    val saveArabicPdfGuideLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("application/pdf")
+    ) { destUri ->
+        if (destUri != null) {
+            try {
+                context.assets.open("pspp/PSPP_Studio_User_Guide_AR.pdf").use { input ->
+                    context.contentResolver.openOutputStream(destUri)?.use { output ->
+                        input.copyTo(output)
+                    }
+                }
+            } catch (_: Exception) {
+            }
+        }
     }
 
     Column(
@@ -166,6 +197,18 @@ fun AboutScreen(
                 }
 
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    AssistChip(
+                        onClick = { saveArabicPdfGuideLauncher.launch("PSPP_Studio_User_Guide_AR.pdf") },
+                        label = { Text("دليل المستخدم (PDF عربي)") },
+                        leadingIcon = { Icon(Icons.Default.Description, contentDescription = null) },
+                        modifier = Modifier.testTag("save_arabic_user_guide_pdf_button")
+                    )
+                    AssistChip(
+                        onClick = { savePdfGuideLauncher.launch("PSPP_Studio_User_Guide.pdf") },
+                        label = { Text("User Guide (EN PDF)") },
+                        leadingIcon = { Icon(Icons.Default.Description, contentDescription = null) },
+                        modifier = Modifier.testTag("save_user_guide_pdf_button")
+                    )
                     AssistChip(
                         onClick = {
                             context.startActivity(

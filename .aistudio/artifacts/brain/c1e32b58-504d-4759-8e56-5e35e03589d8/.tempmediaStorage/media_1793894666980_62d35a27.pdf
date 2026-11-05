@@ -1,0 +1,308 @@
+%PDF-1.4
+%����
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 4660 >>
+stream
+0.07 0.11 0.18 rg 36 792 540 24 re f
+BT /F2 9 Tf 0.9 0.95 1.0 rg 46 801 Td (PSPP Studio v1.0.0  |  GNU PSPP 2.1.2 Native Android User Guide) Tj ET
+BT /F1 9 Tf 0.75 0.85 0.98 rg 500 801 Td (Page 1 of 5) Tj ET
+BT /F2 17 Tf 0.06 0.25 0.52 rg 42 764 Td (PSPP Studio for Android ? Complete User Guide) Tj ET
+BT /F1 10.5 Tf 0.30 0.38 0.48 rg 42 744 Td (GNU PSPP 2.1.2 Native Statistical Engine \(org.pspp.mobile\) ? Version 1.0.0) Tj ET
+0.75 0.82 0.90 RG 1 w 42 736 m 570 736 l S
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 716 Td (1. Overview & Architecture) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 700 Td (PSPP Studio is a native Android statistical analysis environment that embeds the) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 686 Td (real GNU PSPP 2.1.2 engine \(libpspp, libpspp-core, GSL 2.8, libxml2, gettext/libintl\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 672 Td (via JNI \(libpspp_jni.so\). All syntax execution, statistical procedures, and system) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 658 Td (file \(.sav\) processing run locally on your device with full offline support.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 634 Td (Key Capabilities) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 619 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 619 Td (Syntax Editor: Highlighted GNU PSPP \(.sps\) editor with Run All, Run Selection,) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 605 Td (inline line-number error markers, and bundled clinical trial sample scripts.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 591 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 591 Td (Data & Variable View: Dual-grid spreadsheet editor for case data and variable) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 577 Td (dictionary attributes \(Name, Type, Width, Decimals, Label, Values, Missing, Measure\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 563 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 563 Td (Analyze Menu \(9 Procedures\): Point-and-click dialogs that generate and execute) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 549 Td (editable PSPP syntax for Descriptives, Frequencies, Crosstabs, T-Tests, ANOVA,) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 535 Td (Correlation, Linear Regression, Chi-Square, and Scale Reliability \(Cronbach Alpha\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 521 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 521 Td (Output Viewer: Renders native PSPP HTML pivot tables in WebView with one-tap) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 507 Td (export to HTML, PDF \(via Android Print\), Plain Text \(.txt\), CSV, and Share Sheet.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 493 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 493 Td (Storage Access Framework \(SAF\): Open and save .sav, .zsav, .por, .csv, .txt, and .sps) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 479 Td (files from device storage, with interactive CSV delimiter & column-type preview.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 465 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 465 Td (Multilingual Support: Full English, Arabic \(RTL\), and French UI and compiled) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 451 Td (GNU gettext \(.mo\) engine message catalogs.) Tj ET
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 425 Td (2. Getting Started & Navigation) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 409 Td (The bottom navigation bar \(or side Navigation Rail on tablets/foldables\) provides) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 395 Td (six primary workspaces:) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 381 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 381 Td (1. Syntax   ? Write, load, validate, and execute PSPP \(.sps\) syntax scripts.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 367 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 367 Td (2. Data     ? Inspect and edit cases in Data View or metadata in Variable View.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 353 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 353 Td (3. Analyze  ? Configure any of the 9 statistical procedures with live syntax preview.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 339 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 339 Td (4. Output   ? View formatted statistical tables, diagnostics, and export/print.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 325 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 325 Td (5. Files    ? Open/save datasets \(.sav/.csv\) and scripts \(.sps\), or load samples.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 311 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 311 Td (6. About    ? Inspect JNI engine status, GPLv3 license, patches, and documentation.) Tj ET
+0.82 0.86 0.92 RG 0.5 w 42 42 m 570 42 l S
+BT /F1 8.5 Tf 0.40 0.45 0.52 rg 42 28 Td (GNU PSPP 2.1.2 Android (org.pspp.mobile) - Licensed under GNU GPLv3+) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 4390 >>
+stream
+0.07 0.11 0.18 rg 36 792 540 24 re f
+BT /F2 9 Tf 0.9 0.95 1.0 rg 46 801 Td (PSPP Studio v1.0.0  |  GNU PSPP 2.1.2 Native Android User Guide) Tj ET
+BT /F1 9 Tf 0.75 0.85 0.98 rg 500 801 Td (Page 2 of 5) Tj ET
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 760 Td (3. Using the Syntax Editor \(.sps\)) Tj ET
+0.75 0.82 0.90 RG 1 w 42 748 m 570 748 l S
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 732 Td (The Syntax screen provides a dedicated code editor tailored to GNU PSPP commands.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 708 Td (Running Scripts) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 693 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 693 Td (Run All: Executes the entire syntax script in an isolated background working) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 679 Td (directory and automatically opens the Output screen when finished.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 665 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 665 Td (Run Selection \(Lstart-Lend\): Adjust the line selection range using the Selection) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 651 Td (controls and tap Run Selection to execute only the highlighted command block.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 637 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 637 Td (Cancel Execution: While a long procedure is running, tap Cancel in the top) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 623 Td (progress banner to send SIGTERM / atomic cancel to the active native engine worker.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 599 Td (Bundled Sample Scripts) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 584 Td (Tap the 'Samples' button in the Syntax toolbar to load ready-to-run scripts:) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 570 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 570 Td (1. Descriptives & Frequencies \(descriptives.sps\) ? Summary statistics and) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 556 Td (frequency distributions on the 20-patient clinical_trial.csv dataset.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 542 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 542 Td (2. Crosstabs & Independent T-Test \(crosstabs.sps\) ? Contingency tables with) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 528 Td (Pearson Chi-Square, Independent-Samples T-Test, and One-Way ANOVA.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 514 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 514 Td (3. Correlation, Regression & Reliability \(regression.sps\) ? Pearson r matrix,) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 500 Td (Ordinary Least Squares \(OLS\) multiple linear regression, and Cronbach's Alpha.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 476 Td (Syntax Rules & Error Diagnostics) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 461 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 461 Td (Every PSPP command must end with a period \(.\) terminator.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 447 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 447 Td (Comments begin with an asterisk \(*\) at the start of a line and end with \(.\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 433 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 433 Td (If the editor or native engine detects a syntax error, a red badge appears on the) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 419 Td (offending line number and the diagnostic message is displayed in the error banner.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 395 Td (Example PSPP Syntax Snippet) Tj ET
+0.94 0.96 0.99 rg 46 377 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 380 Td (GET FILE='clinical_trial.sav'.) Tj ET
+0.94 0.96 0.99 rg 46 363 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 366 Td (DESCRIPTIVES VARIABLES=age baseline_bp followup_bp outcome_score) Tj ET
+0.94 0.96 0.99 rg 46 349 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 352 Td (  /STATISTICS=MEAN STDDEV MIN MAX VARIANCE SKEWNESS KURTOSIS SEMEAN.) Tj ET
+0.94 0.96 0.99 rg 46 335 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 338 Td (FREQUENCIES VARIABLES=group gender) Tj ET
+0.94 0.96 0.99 rg 46 321 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 324 Td (  /FORMAT=AVALUE TABLE) Tj ET
+0.94 0.96 0.99 rg 46 307 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 310 Td (  /STATISTICS=MEAN STDDEV MEDIAN MODE MIN MAX.) Tj ET
+0.94 0.96 0.99 rg 46 293 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 296 Td (EXECUTE.) Tj ET
+0.82 0.86 0.92 RG 0.5 w 42 42 m 570 42 l S
+BT /F1 8.5 Tf 0.40 0.45 0.52 rg 42 28 Td (GNU PSPP 2.1.2 Android (org.pspp.mobile) - Licensed under GNU GPLv3+) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 4491 >>
+stream
+0.07 0.11 0.18 rg 36 792 540 24 re f
+BT /F2 9 Tf 0.9 0.95 1.0 rg 46 801 Td (PSPP Studio v1.0.0  |  GNU PSPP 2.1.2 Native Android User Guide) Tj ET
+BT /F1 9 Tf 0.75 0.85 0.98 rg 500 801 Td (Page 3 of 5) Tj ET
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 760 Td (4. Data Editor: Data View & Variable View) Tj ET
+0.75 0.82 0.90 RG 1 w 42 748 m 570 748 l S
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 732 Td (The Data screen operates in two synchronized modes toggled at the top of the screen:) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 708 Td (Mode A: Data View \(Case Spreadsheet\)) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 693 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 693 Td (Displays rows \(cases/observations\) and columns \(variables\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 679 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 679 Td (Edit a Cell: Tap any cell to open the edit dialog, enter a new numeric or string) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 665 Td (value, and tap Save. Changes immediately update the active dataset.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 651 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 651 Td (Add / Delete Cases: Use '+ Case' in the toolbar to append a new row, or tap the) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 637 Td (trash icon next to a row number to remove that observation.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 623 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 623 Td (Sync to Syntax: Tap 'Generate .sps' to convert the entire active dataset \(dictionary) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 609 Td (+ inline BEGIN DATA ... END DATA\) into a reproducible PSPP syntax script.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 585 Td (Mode B: Variable View \(Dictionary Metadata\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 570 Td (Tap any variable card in Variable View to configure its 8 standard SPSS/PSPP attributes:) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 556 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 556 Td (1. Name: Variable identifier \(e.g., baseline_bp, outcome_score\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 542 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 542 Td (2. Type: NUMERIC \(F format\) or STRING \(A format\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 528 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 528 Td (3. Width & Decimals: Field width \(e.g., 6\) and decimal places \(e.g., 1 for F6.1\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 514 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 514 Td (4. Label: Descriptive human-readable variable label printed in output tables.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 500 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 500 Td (5. Value Labels: Category mappings formatted as 1=Intensive, 2=Standard, 3=Placebo.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 486 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 486 Td (6. Missing Values: Discrete user-missing codes \(e.g., -9, 999\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 472 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 472 Td (7. Measure Level: SCALE \(continuous\), ORDINAL \(ordered\), or NOMINAL \(categorical\).) Tj ET
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 446 Td (5. Files, CSV Preview & .sav Binary Storage) Tj ET
+0.75 0.82 0.90 RG 1 w 42 434 m 570 434 l S
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 418 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 418 Td (Open .sav / .zsav / .por / .csv: Tap 'Open Dataset' on the Files screen to pick a) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 404 Td (file via Android Storage Access Framework \(SAF\).) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 390 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 390 Td (CSV Import Preview: When opening a CSV/TSV file, PSPP Studio displays an interactive) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 376 Td (preview where you can switch delimiters \(Comma, Semicolon, Tab, Pipe\), toggle the) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 362 Td (header row, and inspect inferred column types \(F vs A\) before importing.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 348 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 348 Td (Export Binary .sav: Tap 'Export .sav' to write a standards-compliant $FL2 binary) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 334 Td (system file \(including long variable names and value labels\) readable by desktop) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 320 Td (GNU PSPP and IBM SPSS.) Tj ET
+0.82 0.86 0.92 RG 0.5 w 42 42 m 570 42 l S
+BT /F1 8.5 Tf 0.40 0.45 0.52 rg 42 28 Td (GNU PSPP 2.1.2 Android (org.pspp.mobile) - Licensed under GNU GPLv3+) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 4004 >>
+stream
+0.07 0.11 0.18 rg 36 792 540 24 re f
+BT /F2 9 Tf 0.9 0.95 1.0 rg 46 801 Td (PSPP Studio v1.0.0  |  GNU PSPP 2.1.2 Native Android User Guide) Tj ET
+BT /F1 9 Tf 0.75 0.85 0.98 rg 500 801 Td (Page 4 of 5) Tj ET
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 760 Td (6. Statistical Procedures Reference \(Analyze Screen\)) Tj ET
+0.75 0.82 0.90 RG 1 w 42 748 m 570 748 l S
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 732 Td (Select a procedure chip on the Analyze screen, pick your target variables, review) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 718 Td (or customize the generated PSPP syntax in the bottom preview box, and tap Run:) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 694 Td (1. Descriptives \(DESCRIPTIVES\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 679 Td (Computes N, Mean, Std. Deviation, Minimum, Maximum, Variance, Skewness, Kurtosis,) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 665 Td (and Std. Error of Mean for one or more continuous scale variables.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 641 Td (2. Frequencies \(FREQUENCIES\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 626 Td (Produces frequency counts, percentages, valid/cumulative percentages, summary) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 612 Td (quantiles \(Mean, Median, Mode, Std. Dev\), and bar chart directives.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 588 Td (3. Crosstabs \(CROSSTABS\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 573 Td (Builds two-way contingency tables \(Row Variable BY Column Variable\) with cell) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 559 Td (counts, row/column/total percentages, Pearson Chi-Square, Likelihood Ratio, and Phi.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 535 Td (4. Independent & Paired-Samples T-Test \(T-TEST\)) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 520 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 520 Td (Independent Mode: Compares means of test variables across two groups defined by) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 506 Td (a grouping variable \(e.g., gender\(1, 2\) or group\(1, 2\)\) with Levene's test and 95% CI.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 492 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 492 Td (Paired Mode: Compares paired measurements \(e.g., baseline_bp WITH followup_bp\).) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 468 Td (5. One-Way ANOVA \(ONEWAY\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 453 Td (Tests differences in means across 2+ factor groups with between/within sums of) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 439 Td (squares, F-statistic, p-value, Levene homogeneity test, and Tukey/Bonferroni post-hoc.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 415 Td (6. Bivariate Correlation \(CORRELATIONS\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 400 Td (Computes the Pearson r correlation matrix, two-tailed significance levels, and) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 386 Td (pairwise sample sizes across all selected numeric variables.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 362 Td (7. Linear Regression \(REGRESSION\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 347 Td (Fits an Ordinary Least Squares \(OLS\) multiple linear regression model:) Tj ET
+0.94 0.96 0.99 rg 46 330 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 333 Td (REGRESSION /VARIABLES=adherence_score baseline_bp age outcome_score) Tj ET
+0.94 0.96 0.99 rg 46 316 520 13 re f
+BT /F3 9 Tf 0.08 0.20 0.38 rg 52 319 Td (  /DEPENDENT=outcome_score /METHOD=ENTER /STATISTICS=COEFF R ANOVA CI.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 295 Td (8. Nonparametric Chi-Square \(NPAR TESTS /CHISQUARE\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 280 Td (Evaluates goodness-of-fit against equal expected category proportions.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 256 Td (9. Scale Reliability \(RELIABILITY /MODEL=ALPHA\)) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 241 Td (Computes Cronbach's Alpha internal consistency and item-total statistics.) Tj ET
+0.82 0.86 0.92 RG 0.5 w 42 42 m 570 42 l S
+BT /F1 8.5 Tf 0.40 0.45 0.52 rg 42 28 Td (GNU PSPP 2.1.2 Android (org.pspp.mobile) - Licensed under GNU GPLv3+) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3690 >>
+stream
+0.07 0.11 0.18 rg 36 792 540 24 re f
+BT /F2 9 Tf 0.9 0.95 1.0 rg 46 801 Td (PSPP Studio v1.0.0  |  GNU PSPP 2.1.2 Native Android User Guide) Tj ET
+BT /F1 9 Tf 0.75 0.85 0.98 rg 500 801 Td (Page 5 of 5) Tj ET
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 760 Td (7. Output Viewer, Exporting & Printing) Tj ET
+0.75 0.82 0.90 RG 1 w 42 748 m 570 748 l S
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 732 Td (After running syntax or an Analyze procedure, the Output screen displays the results:) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 710 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 710 Td (HTML Table View: Renders PSPP pivot tables with full light/dark styling and) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 696 Td (horizontal scrolling for wide multi-variable matrices.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 682 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 682 Td (Plain Text & CSV Tabs: Switch view modes to inspect raw ASCII text tables or) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 668 Td (comma-separated values suitable for spreadsheet import.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 654 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 654 Td (Export HTML / TXT / CSV: Saves the output file directly to device storage via SAF.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 640 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 640 Td (Print / Save as PDF: Invokes the Android PrintManager adapter on the output) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 626 Td (WebView so you can save a paginated PDF report or send it to a wireless printer.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 612 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 612 Td (Share Output: Opens the Android system Share Sheet to send results via email,) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 598 Td (messaging apps, or cloud drives.) Tj ET
+BT /F2 13.5 Tf 0.08 0.22 0.45 rg 42 572 Td (8. Engine Mode Verification & Troubleshooting) Tj ET
+0.75 0.82 0.90 RG 1 w 42 560 m 570 560 l S
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 544 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 544 Td (Verifying Native JNI Execution: Open the 'About' tab or check the top status badge.) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 530 Td (When libpspp_jni.so is loaded, the badge shows 'JNI Native Engine \(libpspp_jni.so\)') Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 516 Td (and no Approximation Mode warning banner is shown.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 502 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 502 Td (Release Builds \(-PallowFallback=false\): Release APKs disable the Kotlin fallback) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 488 Td (evaluator entirely at build time, guaranteeing that 100% of statistical output is) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 474 Td (produced by the genuine C GNU PSPP 2.1.2 engine.) Tj ET
+BT /F2 10 Tf 0.08 0.35 0.65 rg 46 460 Td (*) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 58 460 Td (Changing Language \(EN / AR / FR\): Tap the globe icon in the top app bar to switch) Tj ET
+BT /F1 10 Tf 0.18 0.22 0.28 rg 58 446 Td (between English, Arabic \(with automatic Right-to-Left layout\), and French.) Tj ET
+BT /F2 11 Tf 0.12 0.32 0.58 rg 42 422 Td (License & Attribution) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 407 Td (PSPP Studio embeds GNU PSPP 2.1.2 and is distributed under the GNU General Public) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 393 Td (License v3.0 or later \(GPLv3+\). Full license text and source patches are bundled) Tj ET
+BT /F1 10 Tf 0.12 0.15 0.20 rg 42 379 Td (inside the app under the About tab and in the repository's /patches directory.) Tj ET
+0.82 0.86 0.92 RG 0.5 w 42 42 m 570 42 l S
+BT /F1 8.5 Tf 0.40 0.45 0.52 rg 42 28 Td (GNU PSPP 2.1.2 Android (org.pspp.mobile) - Licensed under GNU GPLv3+) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 14 0 R >>
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000148 00000 n 
+0000000245 00000 n 
+0000000347 00000 n 
+0000000442 00000 n 
+0000005154 00000 n 
+0000005300 00000 n 
+0000009742 00000 n 
+0000009888 00000 n 
+0000014432 00000 n 
+0000014580 00000 n 
+0000018637 00000 n 
+0000018785 00000 n 
+0000022528 00000 n 
+trailer
+<< /Size 16 /Root 1 0 R >>
+startxref
+22676
+%%EOF
